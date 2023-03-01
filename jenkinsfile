@@ -4,22 +4,27 @@ pipeline {
     stages {
         stage('checkout') {
             steps {
-                git 'https://'url of project'
+                git 'https://github.com/heroku/node-js-sample.git'
             }
         }
+        stage( 'build' ) {
+                    steps {
+                        sh 'mvn package'
+                    }
+                }
         stage('codestability') {
             steps {
-                echo 'code stability'
+                sh 'mvn checkstyle:checkstyle'
             }
         }    
         stage('code_analysis') {
             steps {
-                echo 'code analysis'
+                sh 'mvn pmd:pmd'
             }
         }
         stage('code_coverage') {
             steps {
-                echo 'code coverage'
+                sh 'mvn cobertura:cobertura'
             }
         }
         stage('generating_report') {
