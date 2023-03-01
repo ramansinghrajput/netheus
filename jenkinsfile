@@ -1,0 +1,52 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('checkout') {
+            steps {
+                git 'https://'url of project'
+            }
+        }
+        stage('codestability') {
+            steps {
+                echo 'code stability'
+            }
+        }    
+        stage('code_analysis') {
+            steps {
+                echo 'code analysis'
+            }
+        }
+        stage('code_coverage') {
+            steps {
+                echo 'code coverage'
+            }
+        }
+        stage('generating_report') {
+            steps {
+                echo 'generating report' # we can use sonarqube for reports genration
+            }
+        }
+        stage('publish_artifacts') {
+            steps {
+                echo 'publish artifacts' # we can use nexus for storing artifacts
+            }
+        }
+        stage('email_notification') {
+            steps {
+                echo 'email notification' # for alerting 
+            }
+        }
+        stage('slack_notification') {
+            steps {
+                echo 'slack notification' # for alerting on slack 
+            }
+        }
+        
+        stage('deploy') {
+            steps {
+                echo 'deploying code' 
+            }
+        }
+    }
+}
